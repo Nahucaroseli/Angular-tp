@@ -1,0 +1,7 @@
+<div>
+    <ul>
+        <li *ngFor="let game of cartList$ | async">
+            {{game.name}}: {{game.quantity}}
+        </li>
+    </ul>
+</div>

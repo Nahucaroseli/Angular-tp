@@ -1,0 +1,26 @@
+<table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Juego</th>
+        <th scope="col">Genero</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Comprar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games" [ngClass]="{'clearance': game.clearance}">
+        <td><img [src]="game.image" [alt]="game.name"/></td>
+      <td>{{ game.name }}</td>
+      <td>{{ game.gender }}</td>
+      <td>{{ game.price | currency}}</td>
+      <td>
+        <span class="btn btn-dark" *ngIf="game.stock==0">Sin Stock</span>
+        <app-input-number [(quantity)]="game.quantity" [max]="game.stock" (maxReached)="maxReached($event)" *ngIf="game.stock"></app-input-number>
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="addToCart(game)" *ngIf="game.stock>0">Comprar</button>
+      </td>
+      </tr>
+  </table>
