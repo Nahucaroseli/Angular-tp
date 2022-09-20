@@ -9,6 +9,7 @@ import { GameContactComponent } from './game-contact/game-contact.component';
 import {AppRoutingModule} from './app-routing.module';
 import { InputNumberComponent } from './input-number/input-number.component';
 import { CartComponent } from './cart/cart.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameCartService } from '../game-cart.service';
+import { GameDataService } from '../game-data.service';
 import { Game } from './Game';
 
 
@@ -10,31 +11,18 @@ import { Game } from './Game';
 })
 export class GameListComponent implements OnInit {
 
-  constructor(private cart:GameCartService) { }
-  games: Game[] = [
-    {
-      image:"assets/img/download.png",
-      name:'Grand Theft Auto 5',
-      gender:'Open World',
-      price:50,
-      stock:0,
-      clearance:true,
-      quantity:0,
-    },
-    {
-      image:"assets/img/Call-of-Duty-2021.jpg",
-      name:'Call of Duty',
-      gender:'Shooter',
-      price:70,
-      stock:3,
-      clearance:false,
-      quantity:0,
-    },
-  ];
-
+  constructor(private cart:GameCartService,private gameDataService:GameDataService) { }
+  
+  
+  
+  
+  games: Game[]= [];
 
   ngOnInit(): void {
+    this.gameDataService.getAll()
+    .subscribe(games => this.games = games);
   }
+
 
   maxReached(m:string):void{
     alert(m);
