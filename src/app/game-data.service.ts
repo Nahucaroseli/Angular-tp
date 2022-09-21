@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Game } from './game-list/Game';
 
 
@@ -14,7 +14,7 @@ export class GameDataService {
 
 
   public getAll():Observable<Game[]>{
-    return this.http.get<Game[]>(URL);
+    return this.http.get<Game[]>(URL).pipe(tap((games:Game[]) => games.forEach(game => game.quantity=0)));
   }
 
 }

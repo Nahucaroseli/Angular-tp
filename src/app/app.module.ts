@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     GameHomeComponent,
     GameContactComponent,
     InputNumberComponent,
-    CartComponent,
+    CartComponent
     
   ],
   imports: [
